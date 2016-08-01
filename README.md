@@ -85,7 +85,34 @@ spring-mvc.xml中引入sword-ocean
 ### 3.2.4 运行SQL脚本
    进入sword-ocean.properties文件中配置的数据库中运行[doc/sword-ocean.sql](https://github.com/chengn/sword-ocean/blob/master/doc/sword-ocean.sql)  文件
    
-# 四 验证
+# 4 验证
   配置完成之后，启动web应用（tomcat等），运行 http://localhost:8080/***/sword/test 返回结果之后表示集成成功。
+  
+  
+# 5 服务协议
+## 5.1 格式
+  sword-ocean提供的服务协议是json格式的数据内容。
+## 5.2 内容
+  协议内容包括三大类，分别是result（响应结果，包括success和failed），msg（结果说明），data（数据）
+```json
+{
+    "data":[ {"id":1,"name":"test"}, {"id":2,"name":"test2"}],
+    "result":"success",
+    "msg":null
+}
+```
+  
+# 6 服务开发
+在集成sword-ocean成功之后，需要开发自己的数据服务接口的时候，可以选择自己手动配置，也可以选择部署sword-ocean-admin服务之后，进行可视化开发。
+## 6.1 sword服务开发工具
+### 6.1.1 部署sword-ocean-admin管理系统
+
+### 6.1.2 创建数据服务
+
+## 6.2 手动配置
+### 6.2.1 SQL脚本
+
+### 6.2.2 存储过程
+
   
 
