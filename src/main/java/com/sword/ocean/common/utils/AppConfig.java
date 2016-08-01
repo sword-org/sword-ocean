@@ -18,6 +18,8 @@ public class AppConfig {
 	private String clientApp;
 	@Value("${ping.timeout.second}")
 	private String pingTimeoutSecond;
+	@Value("${sword.ocean.jsonp.enable}")
+	private boolean enableJsonP;
 	
 	
 	public boolean getShowSQL() {
@@ -38,6 +40,14 @@ public class AppConfig {
 	public void setPingTimeoutSecond(String pingTimeoutSecond) {
 		this.pingTimeoutSecond = pingTimeoutSecond;
 	}
+	public boolean isEnableJsonP() {
+		return enableJsonP;
+	}
+	public void setEnableJsonP(boolean enableJsonP) {
+		this.enableJsonP = enableJsonP;
+	}
+	
+	
 
 
 

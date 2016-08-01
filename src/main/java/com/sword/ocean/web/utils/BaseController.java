@@ -2,15 +2,12 @@
  * 
  */
 
-package com.sword.ocean.web.controller;
+package com.sword.ocean.web.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.util.JSONPObject;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sword.ocean.web.utils.ErrorInfo;
-import com.sword.ocean.web.utils.RequestResult;
-import com.sword.ocean.web.utils.Result;
 
 
 
@@ -24,6 +21,9 @@ public class BaseController {
 
 	public static final String CALLBACK = "callback";
 	public static final String UNDEFINED = "undefined";
+	public static final String PARAM_TYPE = "type";
+	public static final String AUTH_ERROR_MSG = "对此数据没有权限";
+	
 	protected String callback;
 	
 	/**

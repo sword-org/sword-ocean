@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sword.ocean</groupId>
   <artifactId>sword-ocean</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>sword-ocean</name>
   	<build>
 	    <plugins>
