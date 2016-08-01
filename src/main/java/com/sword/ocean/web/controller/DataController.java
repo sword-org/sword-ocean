@@ -20,13 +20,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
+
 import com.alibaba.fastjson.JSONObject;
 import com.sword.ocean.common.enumType.DataSourceEnum;
+import com.sword.ocean.common.utils.AppConfig;
 import com.sword.ocean.service.BIService;
 import com.sword.ocean.service.DataDriver;
 import com.sword.ocean.web.common.AccessValidation;
 import com.sword.ocean.web.common.ControllerUtils;
 import com.sword.ocean.web.common.Token;
+import com.sword.ocean.web.utils.BaseController;
 
 
 
@@ -40,16 +44,15 @@ import com.sword.ocean.web.common.Token;
 @Controller
 @RequestMapping(value="data")
 public class DataController extends BaseController {
-	private static Logger logger = Logger.getLogger(DataController.class);
-
-	public static final String PARAM_TYPE = "type";
-	public static final String AUTH_ERROR_MSG = "对此数据没有权限";
 	
+	private static Logger logger = Logger.getLogger(DataController.class);
 	
 	@Resource
 	private DataDriver dataDriver;
 	@Resource
-	private BIService biService;
+	private BIService biService;	
+	@Resource
+	private AppConfig appConfig;
 	
 	
 	/**
@@ -59,12 +62,12 @@ public class DataController extends BaseController {
 	 * @return
 	 */
 	private boolean validAuth(HttpServletRequest request,DataSourceEnum ds){
-		String type = request.getParameter("type");
+		String type = request.getParameter(PARAM_TYPE);
 		Token token = AccessValidation.getToken(request);
 		String userName = token.getUserName();
 		
 		Map paramsMap = new HashMap<String, String>();
-		paramsMap.put("type", "userAuth");
+		paramsMap.put(PARAM_TYPE, "userAuth");
 		paramsMap.put("dataName", type);
 		paramsMap.put("userName", userName);
 		
@@ -87,6 +90,10 @@ public class DataController extends BaseController {
 		Map paramsMap = ControllerUtils.getParamMap(request);
 		if(!validIndicatorInput(paramsMap))
 			return renderFailed("参数输入不正确");
+		
+		//设置跨域
+		setEnableJSONP(paramsMap);
+		
 		List<Object> data = dataDriver.query(paramsMap);
 		if(data == null || data.size() <= 0){
 			return renderFailed("查询无结果数据");
@@ -105,6 +112,10 @@ public class DataController extends BaseController {
 		Map paramsMap = ControllerUtils.getParamMap(request);
 		if(!validIndicatorInput(paramsMap))
 			return renderFailed("参数输入不正确");
+		
+		//设置跨域
+		setEnableJSONP(paramsMap);
+		
 		List<Object> data = dataDriver.query(paramsMap,true);
 		if(data == null || data.size() <= 0){
 			return renderFailed("查询无结果数据");
@@ -125,6 +136,21 @@ public class DataController extends BaseController {
 			return false;
 		
 		return true;
+	}
+	
+	/**
+	 * 对跨域的支持
+	 * 如果数据服务要支持跨域请求，请在sword-ocean.propertity中设置支持跨域的选项为true
+	 * @param paramsMap
+	 */
+	private void setEnableJSONP(Map paramsMap){
+		boolean enableJsonP = this.appConfig.isEnableJsonP();
+		if(!enableJsonP)
+			return;
+		if(!StringUtils.isBlank(paramsMap.get(CALLBACK).toString())){
+			this.callback = paramsMap.get(CALLBACK).toString();
+			paramsMap.remove(CALLBACK);
+		}
 	}
 
 }
