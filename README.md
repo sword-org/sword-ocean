@@ -7,7 +7,7 @@
 如果你的需求主要是数据服务类应用，目的是把数据库中存储的数据快速的提供给前台的应用，系统的主要目的就是数据展示，那么本框架非常适用。
 
 ## 可视化系统服务
-如果你的服务或者系统是提供可视化服务的，那么本的系统在可视化数据提供方面也是非常合适的。当然你可以结合sword-chart[https://github.com/sword-org/sword-chart]  的前台可视化控件来非常方便的提供可视化系统。
+如果你的服务或者系统是提供可视化服务的，那么本的系统在可视化数据提供方面也是非常合适的。当然你可以结合[sword-chart](https://github.com/sword-org/sword-chart)  的前台可视化控件来非常方便的提供可视化系统。
 
 
 ## 数据查询密集型系统
@@ -83,7 +83,7 @@ spring-mvc.xml中引入sword-ocean
 ```
 
 ### 4 运行SQL脚本
-   进入sword-ocean.properties文件中配置的数据库中运行doc/sword-ocean.sql[https://github.com/chengn/sword-ocean/blob/master/doc/sword-ocean.sql] 文件
+   进入sword-ocean.properties文件中配置的数据库中运行[doc/sword-ocean.sql](https://github.com/chengn/sword-ocean/blob/master/doc/sword-ocean.sql)  文件
    
 # 验证
   配置完成之后，启动web应用（tomcat等），运行 http://localhost:8080/***/sword/test 返回结果之后表示集成成功。
