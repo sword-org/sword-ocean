@@ -83,7 +83,7 @@ spring-mvc.xml中引入sword-ocean
 ```
 
 ### 4 运行SQL脚本
-   进入sword-ocean.properties文件中配置的数据库中运行doc/sword-ocean.sql文件
+   进入sword-ocean.properties文件中配置的数据库中运行doc/sword-ocean.sql[https://github.com/chengn/sword-ocean/blob/master/doc/sword-ocean.sql] 文件
    
 # 验证
   配置完成之后，启动web应用（tomcat等），运行 http://localhost:8080/***/sword/test 返回结果之后表示集成成功。
