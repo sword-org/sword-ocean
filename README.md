@@ -43,7 +43,7 @@
    在dependencies节点下添加如下依赖
   ```xml
   	<dependency>
-			<groupId>com.sword.ocean</groupId>
+			<groupId>org.sword.ocean</groupId>
 			<artifactId>sword-ocean</artifactId>
 			<version>1.0.1</version>
 		</dependency>
@@ -70,7 +70,7 @@ spring-config.xml中引入sword-ocean
 ```xml
 	<context:annotation-config />
 	<!-- Enables sword-ocean -->
-	<context:component-scan base-package="com.sword.ocean" />
+	<context:component-scan base-package="org.sword.ocean" />
 ```
 spring-mvc.xml中引入sword-ocean
 ```xml
@@ -79,7 +79,7 @@ spring-mvc.xml中引入sword-ocean
     <context:property-placeholder location="classpath:sword-ocean.properties"/>
     
  	<!-- Enables sword-ocean -->
- 	<context:component-scan base-package="com.sword.ocean.web.controller" /> 
+ 	<context:component-scan base-package="org.sword.ocean.web.controller" /> 
 ```
 
 ### 3.2.4 运行SQL脚本
